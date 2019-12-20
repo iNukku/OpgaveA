@@ -70,7 +70,8 @@ namespace OpgaveA
             //if no matches
             return -1;
         }
-
+        // Returns List of books on specified location
+        // Returns null if no books were found
         public List<int> GetIndexOfBooksByPlacement(double target)
         {
             List<int> indexes = new List<int>();
@@ -101,28 +102,7 @@ namespace OpgaveA
         /*
         public int GetIndexOfBookByName(string target)
         {
-            int min = 0;
-            int max = Books.Count - 1;
-            while (min <= max)
-            {
-                int mid = (min + max) / 2;
-
-                //Check which side of collection to search
-                if (string.Compare(Books[mid].BookName, target) == 1)
-                {
-                    max = mid - 1;
-                }
-                else if (string.Compare(Books[mid].BookName, target) == -1)
-                {
-                    min = mid + 1;
-                }
-                else
-                {
-                    return mid;
-                }
-            }
-            //if no matches
-            return -1;
+            //do linear seach
         }
         */
         public override string ToString()
