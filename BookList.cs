@@ -25,7 +25,7 @@ namespace OpgaveA
             }
         }
         #endregion
-        #region methods
+        #region public methods
         public void AddBook(Book book)
         {
             this.Books.Add(book);
@@ -43,33 +43,6 @@ namespace OpgaveA
             return Books[index];
         }
 
-        // Returns index of book searched by its placement
-        // If no match is found returns -1
-        public int GetIndexOfBookByPlacement(double target)
-        {
-            int min = 0;
-            int max = Books.Count - 1;
-            while (min <= max)
-            {
-                int mid = (min + max) / 2;
-
-                //Check which side of collection to search
-                if (target < Books[mid].BookNumber)
-                {
-                    max = mid - 1;
-                }
-                else if (target > Books[mid].BookNumber)
-                {
-                    min = mid + 1;
-                }
-                else
-                {
-                    return mid;
-                }
-            }
-            //if no matches
-            return -1;
-        }
         // Returns List of books on specified location
         // Returns null if no books were found
         public List<int> GetIndexOfBooksByPlacement(double target)
@@ -92,19 +65,24 @@ namespace OpgaveA
                 }
                 else
                 {
-                    indexes.Add(mid);
+                    int startvalue = mid;
+                    while (target == Books[(startvalue - 1)].BookNumber && startvalue > 0)
+	                    {
+                            startvalue--;
+	                    }
+                    while (target == Books[startvalue].BookNumber)
+	                    {
+                            indexes.Add(startvalue);
+                            startvalue++;
+	                    }
+
                     return indexes;
                 }
             }
             //if no matches
             return null;
         }
-        /*
-        public int GetIndexOfBookByName(string target)
-        {
-            //do linear seach
-        }
-        */
+
         public override string ToString()
         {
             string returnstring = "";
