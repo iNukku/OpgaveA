@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpgaveA
 {
-    class BookList
+    public class BookList
     {
         #region fields
         private List<Book> Books = new List<Book>();
@@ -66,17 +66,22 @@ namespace OpgaveA
                 else
                 {
                     int startvalue = mid;
-                    while (target == Books[(startvalue - 1)].BookNumber && startvalue > 0)
+                    while (startvalue > 0 && target == Books[(startvalue - 1)].BookNumber)
 	                    {
                             startvalue--;
 	                    }
                     while (target == Books[startvalue].BookNumber)
 	                    {
                             indexes.Add(startvalue);
-                            startvalue++;
-	                    }
+                        if (startvalue < Books.Count() -1 && target == Books[startvalue +1].BookNumber)
+	                        {
+                               startvalue++;
+                        	}else
+	                        {
+                               return indexes;
+	                        }
 
-                    return indexes;
+	                    }
                 }
             }
             //if no matches

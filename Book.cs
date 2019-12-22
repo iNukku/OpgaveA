@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OpgaveA
 {
-    class Book : IComparable<Book>
+    public class Book : IComparable<Book>
     {
         #region fields
         private double bookNumber;
