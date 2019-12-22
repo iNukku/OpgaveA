@@ -31,7 +31,6 @@ namespace OpgaveA
             Console.WriteLine(myBookList.ToString());
             Console.WriteLine("Which book placement would you like to search for ?");
             double x = double.Parse(Console.ReadLine());
-            //int y = myBookList.GetIndexOfBookByPlacement(x);
 
             List<int> indexes = myBookList.GetIndexOfBooksByPlacement(x);
             if (indexes == null)
@@ -45,9 +44,6 @@ namespace OpgaveA
                     Console.WriteLine($"The book on this placement is : \n" + myBookList.GetBook(index).ToString());
                 }
             }
-
-           // Console.WriteLine($"The book on this placement is : \n" + myBookList.GetBook(y).ToString());
-
 
             Console.ReadKey();
         }
