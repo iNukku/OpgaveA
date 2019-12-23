@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace OpgaveA
 {
@@ -50,7 +51,7 @@ namespace OpgaveA
                 else if (int.Parse(input) == 2)
                 {
                     Console.WriteLine(searchMessage);
-                    checkSearchInput(double.Parse(Console.ReadLine()));
+                    checkSearchInput(Console.ReadLine());
                 }
                 else if (int.Parse(input) == 1)
                 {
@@ -68,20 +69,41 @@ namespace OpgaveA
             }
         }
 
-        private void checkSearchInput(double searchinput)
+        private void checkSearchInput(string searchinput)
         {
-            List<int> indexes = libraryBooklist.GetIndexOfBooksByPlacement(searchinput);
-            if (indexes == null)
-            {
-                Console.WriteLine("No matches - sorry!");
-            }
-            else
-            {
-                foreach (int index in indexes)
+            if (checkForDoubleFormat(searchinput) == 1)
+	        {
+                List<int> indexes = libraryBooklist.GetIndexOfBooksByPlacement(double.Parse(searchinput));
+                if (indexes == null)
                 {
-                    Console.WriteLine($"The book on this placement is : \n" + libraryBooklist.GetBook(index).ToString());
+                    Console.WriteLine("No matches - sorry!");
                 }
-            }
+                else
+
+                {
+                    foreach (int index in indexes)
+                    {
+                        Console.WriteLine($"The book on this placement is : \n" + libraryBooklist.GetBook(index).ToString());
+                    }
+                }
+	        }else
+	        {
+                     Console.WriteLine("You can only use the format xx,yy to search \n");
+	        }
+
+        }
+
+        private int checkForDoubleFormat(string input)
+        {
+            Regex regtest = new Regex(@"\b\d+(,(\d+))?\b");
+
+            if (regtest.IsMatch(input))
+	            {
+                    return 1;
+	            }else
+	            {
+                    return -1;
+	            }
         }
         #endregion
 

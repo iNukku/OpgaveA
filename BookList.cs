@@ -62,7 +62,7 @@ namespace OpgaveA
                 else if (target > Books[mid].BookNumber)
                 {
                     min = mid + 1;
-                }
+                }//if match is found, check for other matches to the left and to the right of it
                 else
                 {
                     int startvalue = mid;
