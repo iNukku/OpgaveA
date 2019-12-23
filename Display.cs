@@ -42,19 +42,19 @@ namespace OpgaveA
         {
             try
             {
-                if (int.Parse(input) == 1 )
+                if (input.ToLower() == "q" )
                 {
-                    Console.WriteLine(libraryBooklist.ToString());
+                    Console.WriteLine("Ending program - bye bye");
+                    endprogram = true;
                 }
                 else if (int.Parse(input) == 2)
                 {
                     Console.WriteLine(searchMessage);
                     checkSearchInput(double.Parse(Console.ReadLine()));
                 }
-                else if (input.ToLower() == "q")
+                else if (int.Parse(input) == 1)
                 {
-                    Console.WriteLine("Ending program - bye bye");
-                    endprogram = true;
+                    Console.WriteLine(libraryBooklist.ToString());
                 }
                 else
                 {
