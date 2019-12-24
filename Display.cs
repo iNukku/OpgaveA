@@ -88,14 +88,14 @@ namespace OpgaveA
                 }
 	        }else
 	        {
-                     Console.WriteLine("You can only use the format xx,yy to search \n");
+                     Console.WriteLine("You can only use the format xx,yy or xx to search \n");
 	        }
 
         }
 
         private int checkForDoubleFormat(string input)
         {
-            Regex regtest = new Regex(@"\b\d+(,(\d+))?\b");
+            Regex regtest = new Regex(@"\A\b\d+(,(\d+))?\b");
 
             if (regtest.IsMatch(input))
 	            {
