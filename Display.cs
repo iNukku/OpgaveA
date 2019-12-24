@@ -95,7 +95,7 @@ namespace OpgaveA
 
         private int checkForDoubleFormat(string input)
         {
-            Regex regtest = new Regex(@"\A\b\d+(,(\d+))?\b");
+            Regex regtest = new Regex(@"\A\b\d+(,(\d+))?\b\Z");
 
             if (regtest.IsMatch(input))
 	            {
